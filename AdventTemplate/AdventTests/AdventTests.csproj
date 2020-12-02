@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Advent2020Day1Library\AdventLibrary.csproj" />
+    <ProjectReference Include="..\AdventLibrary\AdventLibrary.csproj" />
   </ItemGroup>
 
 </Project>
