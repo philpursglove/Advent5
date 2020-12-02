@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AdventLibrary;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AdventRunner
 {
@@ -6,7 +9,20 @@ namespace AdventRunner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<string> input = new List<string>();
+
+            using (FileStream stream = new FileStream("InputFile.txt", FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    while(!reader.EndOfStream)
+                    {
+                        input.Add(reader.ReadLine());
+                    }
+                }
+            }
+
+            Console.ReadLine();
         }
     }
 }
