@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace AdventRunner
 {
@@ -19,6 +20,33 @@ namespace AdventRunner
                     {
                         input.Add(reader.ReadLine());
                     }
+                }
+            }
+
+            List<int> seatIds = new List<int>();
+
+            SeatAllocator allocator = new SeatAllocator();
+
+            foreach (string seatSpec in input)
+            {
+                seatIds.Add(allocator.GetSeatId(seatSpec));
+            }
+
+            // Part 1
+            //Console.WriteLine(seatIds.Max());
+
+            seatIds = seatIds.OrderBy(i => i).ToList();
+
+            //foreach(int seatId in seatIds)
+            //{
+            //    Console.WriteLine(seatId);
+            //}
+
+            for (int i = seatIds.Min(); i < seatIds.Max(); i++)
+            {
+                if (!seatIds.Contains(i) && seatIds.Contains(i - 1) && seatIds.Contains(i + 1))
+                {
+                    Console.WriteLine(i);
                 }
             }
 
